@@ -5,6 +5,19 @@
     --lighttext: #A9E4D7;
 }
 
+body {
+    background-color: var(--darkbackground);
+}
+
+.currentword {
+    color: var(--darktext);
+    font-size: 40px;
+}
+
+.guessed {
+    color: var(--lighttext);
+    font-size: 30px;
+}
 
 footer {
     position: absolute;
