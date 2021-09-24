@@ -1,0 +1,17 @@
+* {
+    --darkbackground: #4B3869; 
+    --lightbackground: #664E88; 
+    --darktext: #63B4B8; 
+    --lighttext: #A9E4D7;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--lightbackground);
+    color: var(--lighttext);
+    padding: 10px;
+    text-align: center;
+}
