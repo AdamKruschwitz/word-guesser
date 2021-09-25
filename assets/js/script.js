@@ -15,6 +15,8 @@
 // Get game element
 var gameEl = window.document.getElementById("game");
 var word = "Banana";
+var acceptableChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var guessedChar = ""
 
 var charEls = [];
 
@@ -45,6 +47,21 @@ function buildWordDisplay() {
         charEls.push(charEl);
         gameEl.appendChild(charEl); // Might change to add spans to a header tag
     }
+}
+
+document.addEventListener("keydown", onKeyboardPress);
+
+// get letter thats been pressed
+// get that letter
+function onKeyboardPress(event) {
+    var key = event.key;
+    if (acceptableChar.includes(key) && !guessedChar.includes(key)) {
+        makeGuess(key);
+    } 
+}
+
+function makeGuess(char) {
+    
 }
 
 function buildLossScreen() {
