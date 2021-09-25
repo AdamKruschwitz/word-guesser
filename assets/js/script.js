@@ -20,6 +20,9 @@ var guessedChar = ""
 
 var charEls = [];
 
+// Check local storage and initiate it if needed
+if(!checkLocalStorage()) initiateLocalStorage();
+
 // Start Timer
 var timerValue = 60; // 60 seconds
 var timerEl = document.createElement("p");
@@ -78,6 +81,7 @@ function makeGuess(char) {
     // Check whether guess was winning
     if(checkWin()) {
         clearTimeout(timer);
+        recordWin();
         clearSpace();
         buildWinScreen();
     }
@@ -103,6 +107,16 @@ function buildLossScreen() {
 
 function recordLoss() {
     // Records the loss in local memory
+    let stats = JSON.parse(localStorage.getItem("wordGuesserStats"));
+    stats.losses++;
+    localStorage.setItem("wordGuesserStats", JSON.stringify(stats));
+}
+
+function recordWin() {
+    // Records the last win
+    let stats = JSON.parse(localStorage.getItem("wordGuesserStats"));
+    stats.wins++;
+    localStorage.setItem("wordGuesserStats", JSON.stringify(stats));
 }
 
 function buildWinScreen() {
@@ -120,5 +134,27 @@ function clearSpace() {
 
 function buildStats() {
     // Builds stats table taking from localStorage
-    
+    let stats = JSON.parse(localStorage.getItem("wordGuesserStats"));
+    let statsContainer = document.createElement("section");
+    let wins = document.createElement("p");
+    let losses = document.createElement("p");
+
+    wins.innerHTML = "Wins: " + stats.wins;
+    losses.innerHTML = "Losses: " + stats.losses;
+
+    statsContainer.appendChild(wins);
+    statsContainer.appendChild(losses);
+    gameEl.appendChild(statsContainer);
+}
+
+function checkLocalStorage() {
+    return localStorage.getItem("wordGuesserStats");
+}
+
+function initiateLocalStorage() {
+    let stats = {
+        "wins": 0,
+        "losses": 0
+    }
+    localStorage.setItem("wordGuesserStats", JSON.stringify(stats));
 }
