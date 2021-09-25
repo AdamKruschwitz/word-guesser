@@ -1,7 +1,7 @@
 // PSEUDOCODE
 // Get a random word
-// Start a timer which counts down to 0
-// Display "_" instead of each character in the chosen word
+// Start a timer which counts down to 0                     X
+// Display "_" instead of each character in the chosen word X
 // When the player presses a letter key that isn't in guessed
     // Reveal that character from the chosen word if it appears and add it to guessed (make a guess)
 // When random word is fully revealed
